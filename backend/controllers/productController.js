@@ -1,6 +1,6 @@
 const pool = require('../config/db');
 
-exports.product = async (req, res) => {
+exports.addProduct = async (req, res) => {
     try {
         const { title, price, description, image } = req.body
         const result = await pool.query(
@@ -29,7 +29,7 @@ exports.delProduct = async (req, res) => {
         if (result.rowCount === 0) {
             return res.status(404).json({ message: `Mahsulotingiz mavjud emas` });
         }
-        res.json({ message: `Mahsulotingiz muvaffaqiyatli o'chirildi` })
+        res.status(200).json({ message: `Mahsulotingiz muvaffaqiyatli o'chirildi` })
     } catch (error) {
         console.log(error.message);
         res.status(500).send('Serverda xatolik')
@@ -50,5 +50,4 @@ exports.editProduct = async(req,res)=>{
         res.status(500).send('Serverda xatolik')
     }
 }
-
 
