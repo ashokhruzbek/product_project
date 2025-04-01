@@ -1,14 +1,14 @@
-import React from 'react'
-import ProductItem from './ProductItem'
+import React, { useState } from "react";
+import ProductItem from "./ProductItem";
 
-function ProductList({products}) {
+function ProductList({ products }) {
   return (
-    <div className='product-list'>
-        {products.map(product =>{
-            return <ProductItem product={product}/>
-        })}
+    <div className="product_list">
+      {products.map((product) => {
+        return <ProductItem key={product.id} product={product} />;
+      })}
     </div>
-  )
+  );
 }
 
-export default ProductList
+export default ProductList;

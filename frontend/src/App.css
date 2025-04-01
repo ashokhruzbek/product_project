@@ -60,7 +60,8 @@
 .delete-button:hover {
   background-color: #c0392b;
 }
-.product-list{
+
+.product_list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

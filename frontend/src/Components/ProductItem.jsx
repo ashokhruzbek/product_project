@@ -1,6 +1,7 @@
 import React from "react";
 
-function ProductItem({ product }) {
+function ProductItem({ product }){
+ 
   return (
     <div className="card">
       <img src={product.image} alt="Telefon rasmi" className="card-image" />
@@ -12,9 +13,7 @@ function ProductItem({ product }) {
             ? product.description.slice(0, 110) + "..."
             : product.description}
         </p>
-        <button className="delete-button">
-          O'chirish
-        </button>
+        <button className="delete-button" >O'chirish</button>
       </div>
     </div>
   );

@@ -1,13 +1,8 @@
-import './App.css'
-import ProductApp from './Components/ProductApp'
+import "./App.css";
+import ProductApp from "./components/ProductApp";
 
 function App() {
-
-  return (
-    <div>
-    <ProductApp/>
-    </div>
-  )
+  return <ProductApp />;
 }
 
-export default App
+export default App;
