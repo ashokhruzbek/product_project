@@ -1,4 +1,6 @@
-const pool = require('../config/db');
+const pool = require("../config/db");
+
+
 
 exports.addProduct = async (req, res) => {
     try {
