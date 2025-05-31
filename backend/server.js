@@ -8,7 +8,7 @@ app.use(cors());
 app.use(express.json());
 
 // API routes
-app.use("/products", productRouter);
+app.use("api/products", productRouter);
 
 const port = 4001;
 app.listen(port, () => {
