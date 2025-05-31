@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES6",                        // Qaysi JavaScript versiyasiga kompilyatsiya qilinadi
+    "module": "ESNext",                     // Modul tizimi, React uchun ko‘p ESNext ishlatiladi
+    "jsx": "react-jsx",                     // JSX qanday kompilyatsiya qilinadi
+    "moduleResolution": "node",             // Modul qayerdan topilishini ko‘rsatadi (Node.js kabi)
+    "baseUrl": "./src",                     // Qayerdan import aliaslar boshlanadi (asosan src)
+    "paths": {
+      "@components/*": ["components/*"],   // @components aliasi src/components/* ga teng bo‘ladi
+      "@utils/*": ["utils/*"]               // Boshqa aliaslar shunday qo‘shiladi
+    },
+    "strict": true,                         // Qattiq tip tekshiruvlar
+    "esModuleInterop": true,                // ES modullarini CommonJS bilan moslash
+    "skipLibCheck": true,                   // Kutubxonalar fayllarini tekshirishni o‘tkazib yuborish
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src"],                       // Loyiha ichida ts fayllar qaerdaligini bildiradi
+  "exclude": ["node_modules", "build"]     // Bu papkalarni hisobga olmaslik
+}

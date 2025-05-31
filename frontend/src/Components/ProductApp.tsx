@@ -5,36 +5,62 @@ import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import Header from "@/components/Header";
-import ProductForm from "@/components/ProductForm";
-import ProductList from "@/components/ProductList";
-import DeleteModal from "@/components/DeleteModal";
-import EditModal from "@/components/EditModal";
-import LoadingSpinner from "@/components/LoadingSpinner";
-import SearchBar from "@/components/SearchBar";
-import QuickViewModal from "@/components/QuickViewModal";
+import Header from "../components/Header";
+import ProductForm from "../components/ProductForm";
+import ProductList from "../components/ProductList";
+import DeleteModal from "../components/DeleteModal";
+import EditModal from "../components/EditModal";
+import LoadingSpinner from "../components/LoadingSpinner";
+import SearchBar from "../components/SearchBar";
+import QuickViewModal from "../components/QuickViewModal";
+
+// Product interfeysi
+interface Product {
+  id: number | string;
+  title?: string;
+  description?: string;
+  [key: string]: any; // boshqa maydonlar uchun (agar bo'lsa)
+}
+
+interface DeleteModalState {
+  isOpen: boolean;
+  product: Product | null;
+}
+
+interface EditModalState {
+  isOpen: boolean;
+  product: Product | null;
+}
+
+interface QuickViewModalState {
+  isOpen: boolean;
+  product: Product | null;
+}
 
 export default function ProductApp() {
-  const [products, setProducts] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [deleteModal, setDeleteModal] = useState({
+  const [products, setProducts] = useState<Product[]>([]);
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [deleteModal, setDeleteModal] = useState<DeleteModalState>({
     isOpen: false,
     product: null,
   });
-  const [editModal, setEditModal] = useState({ isOpen: false, product: null });
-  const [quickViewModal, setQuickViewModal] = useState({
+  const [editModal, setEditModal] = useState<EditModalState>({
     isOpen: false,
     product: null,
   });
-  const [favorites, setFavorites] = useState(new Set());
+  const [quickViewModal, setQuickViewModal] = useState<QuickViewModalState>({
+    isOpen: false,
+    product: null,
+  });
+  const [favorites, setFavorites] = useState<Set<number | string>>(new Set());
 
   // Fetch products from API
-  const fetchProducts = async () => {
+  const fetchProducts = async (): Promise<void> => {
     try {
       setLoading(true);
-      const response = await axios.get("http://localhost:4001/products");
+      const response = await axios.get<Product[]>("http://localhost:4001/products");
       setProducts(response.data);
       setFilteredProducts(response.data);
       toast.success("Products loaded successfully!", {
@@ -63,9 +89,9 @@ export default function ProductApp() {
   }, [products, searchTerm]);
 
   // Add new product
-  const addProduct = async (newProduct) => {
+  const addProduct = async (newProduct: Partial<Product>): Promise<void> => {
     try {
-      const response = await axios.post(
+      const response = await axios.post<Product>(
         "http://localhost:4001/products",
         newProduct
       );
@@ -85,12 +111,12 @@ export default function ProductApp() {
   };
 
   // Update product
-  const updateProduct = async (updatedProduct) => {
+  const updateProduct = async (updatedProduct: Partial<Product>): Promise<void> => {
     try {
       const productId = editModal.product?.id;
       if (!productId) throw new Error("Invalid product ID");
 
-      const response = await axios.put(
+      const response = await axios.put<Product>(
         `http://localhost:4001/products/${productId}`,
         updatedProduct
       );
@@ -114,7 +140,7 @@ export default function ProductApp() {
   };
 
   // Delete product
-  const deleteProduct = async (productId) => {
+  const deleteProduct = async (productId: number | string): Promise<void> => {
     try {
       await axios.delete(`http://localhost:4001/products/${productId}`);
       setProducts((prev) => prev.filter((product) => product.id !== productId));
@@ -136,20 +162,21 @@ export default function ProductApp() {
     }
   };
 
-  const handleDeleteClick = (product) =>
+  const handleDeleteClick = (product: Product): void =>
     setDeleteModal({ isOpen: true, product });
-  const handleEditClick = (product) => setEditModal({ isOpen: true, product });
-  const handleQuickViewClick = (product) =>
+  const handleEditClick = (product: Product): void =>
+    setEditModal({ isOpen: true, product });
+  const handleQuickViewClick = (product: Product): void =>
     setQuickViewModal({ isOpen: true, product });
 
-  const handleDeleteConfirm = () => {
+  const handleDeleteConfirm = (): void => {
     if (deleteModal.product?.id) {
       deleteProduct(deleteModal.product.id);
     }
     setDeleteModal({ isOpen: false, product: null });
   };
 
-  const toggleFavorite = (productId) => {
+  const toggleFavorite = (productId: number | string): void => {
     setFavorites((prev) => {
       const newFavorites = new Set(prev);
       if (newFavorites.has(productId)) {
