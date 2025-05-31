@@ -4,6 +4,7 @@ import "./Global.css";
 
 
 function App() {
+  // hi there, this is a comment
   return <ProductApp />;
 }
 

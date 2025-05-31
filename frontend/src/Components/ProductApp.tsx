@@ -5,14 +5,14 @@ import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import Header from "../components/Header";
-import ProductForm from "../components/ProductForm";
-import ProductList from "../components/ProductList";
-import DeleteModal from "../components/DeleteModal";
-import EditModal from "../components/EditModal";
-import LoadingSpinner from "../components/LoadingSpinner";
-import SearchBar from "../components/SearchBar";
-import QuickViewModal from "../components/QuickViewModal";
+import Header from "./Header";
+import ProductForm from "./ProductForm";
+import ProductList from "./ProductList";
+import DeleteModal from "./DeleteModal";
+import EditModal from "./EditModal";
+import LoadingSpinner from "./LoadingSpinner";
+import SearchBar from "./SearchBar";
+import QuickViewModal from "./QuickViewModal";
 
 // Product interfeysi
 interface Product {
