@@ -1,6 +1,6 @@
 
 import "./Global.css";
-import ProductApp from "./components/ProductApp";
+import ProductApp from "./components/ProductApp.tsx";
 
 
 function App() {
