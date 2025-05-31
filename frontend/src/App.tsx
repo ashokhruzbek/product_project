@@ -1,4 +1,4 @@
-import ProductApp from "./components/ProductApp";
+import ProductApp from "./components/ProductApp.tsx";
 import "./Global.css";
 
 
