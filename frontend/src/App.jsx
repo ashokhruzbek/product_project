@@ -1,4 +1,4 @@
-import ProductApp from "./Components/ProductApp";
+import ProductApp from "./components/ProductApp";
 import "./Global.css";
 
 
