@@ -1,0 +1,67 @@
+name: Deploy to EC2 CI/CD
+
+on:
+  push:
+    branches:
+      - main # Yoki sizning asosiy deployment branch'ingiz (masalan, master)
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest # GitHub Actions ishlaydigan virtual mashina OS'i
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4 # Kodingizni virtual mashinaga yuklab oladi
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4 # Node.js muhitini sozlaydi
+        with:
+          node-version: '20' # Loyihangizga mos Node.js versiyasini kiriting (masalan, 18, 20)
+
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v1.0.3 # EC2 ga SSH orqali ulanish va buyruqlarni bajarish uchun action
+        with:
+          host: ${{ secrets.EC2_HOST }} # EC2 instance IP manzili yoki DNS nomi
+          username: ${{ secrets.EC2_USER }} # EC2 ga ulanish uchun foydalanuvchi nomi (masalan, ubuntu, ec2-user)
+          key: ${{ secrets.AWS_SSH_PRIVATE_KEY }} # EC2 ga SSH orqali parolsiz ulanish uchun shaxsiy kalit
+          script: |
+            set -e # Xatolik yuz berganda scriptni darhol to'xtatish
+
+            echo ">>> Navigating to project directory..."
+            # PROJECT_PATH ni GitHub Secrets da to'g'ri yo'l bilan sozlang.
+            # Nginx loglarida /home/ubuntu/product_project/frontend/dist/ ko'ringan edi,
+            # shuning uchun PROJECT_PATH = /home/ubuntu/product_project bo'lishi mumkin.
+            cd ${{ secrets.PROJECT_PATH }} 
+
+            echo ">>> Pulling latest changes from Git..."
+            git fetch --all
+            git reset --hard origin/main # Yoki sizning asosiy branch'ingiz
+            git pull origin main
+
+            echo ">>> Installing backend dependencies and restarting/reloading..."
+            cd backend # Yoki backend papkangizning nisbiy yo'li (PROJECT_PATH ichida)
+            npm install --production # Faqat production uchun kerakli bog'liqliklarni o'rnatadi
+            
+            # Agar backend build qilinishi kerak bo'lsa (masalan, TypeScript):
+            # echo ">>> Building backend..."
+            # npm run build
+            
+            # Backend'ni PM2 orqali qayta ishga tushirish/yuklash:
+            # Quyidagi "sizning-pm2-ilova-nomingiz" ni PM2 dagi ilovangiz nomiga almashtiring.
+            # "server.js" ni esa backend'ning asosiy ishga tushirish fayliga o'zgartiring (masalan, app.js, dist/main.js).
+            pm2 reload ${{ secrets.BACKEND_APP_NAME }} || pm2 start server.js --name "${{ secrets.BACKEND_APP_NAME }}"
+            pm2 save # PM2 jarayonlar ro'yxatini saqlash
+
+            echo ">>> Installing frontend dependencies and building..."
+            cd ../frontend # Yoki frontend papkangizning nisbiy yo'li (PROJECT_PATH ichida)
+            npm install
+            
+            # Agar frontend build paytida muhit o'zgaruvchilari kerak bo'lsa (.env fayli orqali),
+            # ularni GitHub secrets dan olib, shu yerda .env fayliga yozishingiz mumkin:
+            # Misol: echo "REACT_APP_API_URL=${{ secrets.REACT_APP_API_URL }}" > .env
+            npm run build # Frontend'ni build qilish (masalan, React uchun)
+            # Nginxning fayllarga kirish huquqi bilan bog'liq muammolar oldini olish uchun,
+            # build qilingan fayllar joylashgan papka huquqlarini tekshirish kerak bo'lishi mumkin,
+            # ayniqsa, agar PROJECT_PATH /home/ubuntu/ kabi foydalanuvchi papkasida bo'lsa.
+
+            echo ">>> Deployment to EC2 finished!"
