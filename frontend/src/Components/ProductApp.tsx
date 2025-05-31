@@ -60,7 +60,7 @@ export default function ProductApp() {
   const fetchProducts = async (): Promise<void> => {
     try {
       setLoading(true);
-      const response = await axios.get<Product[]>("http://localhost:4001/products");
+      const response = await axios.get<Product[]>("http://51.21.3.241/api/products");
       setProducts(response.data);
       setFilteredProducts(response.data);
       toast.success("Products loaded successfully!", {
