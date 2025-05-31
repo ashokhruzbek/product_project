@@ -92,7 +92,7 @@ export default function ProductApp() {
   const addProduct = async (newProduct: Partial<Product>): Promise<void> => {
     try {
       const response = await axios.post<Product>(
-        "http://localhost:4001/products",
+        "http://51.21.3.241/api/products",
         newProduct
       );
       setProducts((prev) => [response.data, ...prev]);
@@ -117,7 +117,7 @@ export default function ProductApp() {
       if (!productId) throw new Error("Invalid product ID");
 
       const response = await axios.put<Product>(
-        `http://localhost:4001/products/${productId}`,
+        `http://51.21.3.241/api/products/${productId}`,
         updatedProduct
       );
       setProducts((prev) =>
@@ -142,7 +142,7 @@ export default function ProductApp() {
   // Delete product
   const deleteProduct = async (productId: number | string): Promise<void> => {
     try {
-      await axios.delete(`http://localhost:4001/products/${productId}`);
+      await axios.delete(`http://51.21.3.241/api/products/${productId}`);
       setProducts((prev) => prev.filter((product) => product.id !== productId));
       setFavorites((prev) => {
         const newFavorites = new Set(prev);
