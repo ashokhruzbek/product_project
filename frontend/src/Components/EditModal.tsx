@@ -1,6 +1,3 @@
-"use client"
-
-import type React from "react"
 import { useEffect, useState } from "react"
 import { Edit, Save, X, DollarSign, ImageIcon, FileText } from "lucide-react"
 
