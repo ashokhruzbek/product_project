@@ -142,7 +142,7 @@ export default function ProductApp() {
   // Delete product
   const deleteProduct = async (productId: number | string): Promise<void> => {
     try {
-      await axios.delete(`http://51.21.3.241/api/products/${productId}`);
+      await axios.delete(`http://51.20.76.40/api/products/${productId}`);
       setProducts((prev) => prev.filter((product) => product.id !== productId));
       setFavorites((prev) => {
         const newFavorites = new Set(prev);
