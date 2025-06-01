@@ -60,7 +60,7 @@ export default function ProductApp() {
   const fetchProducts = async (): Promise<void> => {
     try {
       setLoading(true);
-      const response = await axios.get<Product[]>("http://51.21.3.241/api/products");
+      const response = await axios.get<Product[]>("http://51.20.76.40/api/products");
       setProducts(response.data);
       setFilteredProducts(response.data);
       toast.success("Products loaded successfully!", {
@@ -92,7 +92,7 @@ export default function ProductApp() {
   const addProduct = async (newProduct: Partial<Product>): Promise<void> => {
     try {
       const response = await axios.post<Product>(
-        "http://51.21.3.241/api/products",
+        "http://51.20.76.40/api/products",
         newProduct
       );
       setProducts((prev) => [response.data, ...prev]);
@@ -117,7 +117,7 @@ export default function ProductApp() {
       if (!productId) throw new Error("Invalid product ID");
 
       const response = await axios.put<Product>(
-        `http://51.21.3.241/api/products/${productId}`,
+        `hhttp://51.20.76.40/api/products/${productId}`,
         updatedProduct
       );
       setProducts((prev) =>
