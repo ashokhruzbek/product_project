@@ -63,7 +63,7 @@ export default function ProductApp() {
       const response = await axios.get<Product[]>("http://51.20.76.40/api/products");
       setProducts(response.data);
       setFilteredProducts(response.data);
-      toast.success("Products loaded successfully!", {
+      toast.success("Mahsulotlar yuklandi", {
         position: "top-right",
         autoClose: 2000,
       });
