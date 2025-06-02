@@ -96,13 +96,13 @@ export default function ProductApp() {
         newProduct
       );
       setProducts((prev) => [response.data, ...prev]);
-      toast.success("🎉 Product added successfully!", {
+      toast.success("Mahsulot qo'shildi!", {
         position: "top-right",
         autoClose: 3000,
       });
     } catch (error) {
       console.error("Error adding product:", error);
-      toast.error("❌ Failed to add product", {
+      toast.error("Mahsulot qo'shishda xatolik", {
         position: "top-right",
         autoClose: 3000,
       });
@@ -125,13 +125,13 @@ export default function ProductApp() {
           product.id === productId ? response.data : product
         )
       );
-      toast.success("✅ Product updated successfully!", {
+      toast.success("Mahsulot o'zgartirildi!", {
         position: "top-right",
         autoClose: 3000,
       });
     } catch (error) {
       console.error("Error updating product:", error);
-      toast.error("❌ Failed to update product", {
+      toast.error("Mahsulot o'zgartirishda xatolik", {
         position: "top-right",
         autoClose: 3000,
       });
@@ -149,13 +149,13 @@ export default function ProductApp() {
         newFavorites.delete(productId);
         return newFavorites;
       });
-      toast.success("🗑️ Product deleted successfully!", {
+      toast.success("Mahsulot o'chirildi!", {
         position: "top-right",
         autoClose: 3000,
       });
     } catch (error) {
       console.error("Error deleting product:", error);
-      toast.error("❌ Failed to delete product", {
+      toast.error("Mahsulot o'chirishda xatolik", {
         position: "top-right",
         autoClose: 3000,
       });
@@ -181,10 +181,10 @@ export default function ProductApp() {
       const newFavorites = new Set(prev);
       if (newFavorites.has(productId)) {
         newFavorites.delete(productId);
-        toast.info("💔 Removed from favorites", { autoClose: 2000 });
+        toast.info("Sevimlidan o'chirildi", { autoClose: 2000 });
       } else {
         newFavorites.add(productId);
-        toast.success("❤️ Added to favorites", { autoClose: 2000 });
+        toast.success("Sevimliga qo'shildi", { autoClose: 2000 });
       }
       return newFavorites;
     });
