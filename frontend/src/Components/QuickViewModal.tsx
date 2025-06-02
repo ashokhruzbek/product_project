@@ -73,20 +73,20 @@ export default function QuickViewModal({
               <div className="flex items-center space-x-2 text-sm">
                 <div className="flex items-center space-x-1 text-green-600 bg-green-50 px-2 py-1 rounded-full">
                   <Shield className="h-3 w-3" />
-                  <span>Quality Guaranteed</span>
+                  <span>Sifatli Garantiya</span>
                 </div>
                 <div className="flex items-center space-x-1 text-blue-600 bg-blue-50 px-2 py-1 rounded-full">
                   <Truck className="h-3 w-3" />
-                  <span>Free Shipping</span>
+                  <span> Bepul dostavka </span>
                 </div>
                 <div className="flex items-center space-x-1 text-orange-600 bg-orange-50 px-2 py-1 rounded-full">
                   <Zap className="h-3 w-3" />
-                  <span>Popular</span>
+                  <span>Mashhur</span>
                 </div>
               </div>
 
               <div>
-                <h3 className="font-semibold text-gray-900 mb-2">Description</h3>
+                <h3 className="font-semibold text-gray-900 mb-2">Tasvir</h3>
                 <p className="text-gray-600 leading-relaxed">{product.description}</p>
               </div>
 
@@ -100,7 +100,7 @@ export default function QuickViewModal({
                   }`}
                 >
                   <Heart className={`h-5 w-5 inline mr-2 ${isFavorite ? "fill-current" : ""}`} />
-                  {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
+                  {isFavorite ? "Sevimlidan o'chirish" : "Sevimliga qo'shish"}
                 </button>
 
                 <button
@@ -108,7 +108,7 @@ export default function QuickViewModal({
                   className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white py-3 px-4 rounded-xl transition-all duration-300 transform hover:scale-105"
                 >
                   <Edit className="h-5 w-5 inline mr-2" />
-                  Edit Product
+                  Mahsulotni Tahrirlash
                 </button>
               </div>
             </div>

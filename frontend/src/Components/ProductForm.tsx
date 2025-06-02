@@ -53,10 +53,10 @@ export default function ProductForm({ addProduct }: ProductFormProps) {
               <Plus className="h-6 w-6 text-white" />
             </div>
             <div>
-              <h2 className="text-xl font-bold text-gray-900">Add New Product</h2>
+              <h2 className="text-xl font-bold text-gray-900">Yangi Mahsulot qo'sh</h2>
               <p className="text-sm text-gray-500 flex items-center space-x-1">
                 <Sparkles className="h-3 w-3" />
-                <span>Create something amazing</span>
+                <span>Biron nima qo'sh</span>
               </p>
             </div>
           </div>

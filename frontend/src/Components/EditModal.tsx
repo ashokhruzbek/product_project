@@ -83,7 +83,7 @@ export default function EditModal({ isOpen, onClose, onSave, product }: EditModa
             <div className="space-y-2">
               <label className="text-sm font-medium text-gray-700 flex items-center space-x-2">
                 <FileText className="h-4 w-4" />
-                <span>Product Title</span>
+                <span>Mahsulot Nomi</span>
               </label>
               <input
                 type="text"
@@ -92,7 +92,7 @@ export default function EditModal({ isOpen, onClose, onSave, product }: EditModa
                 onChange={handleChange}
                 onFocus={() => setFocusedField("title")}
                 onBlur={() => setFocusedField("")}
-                placeholder="Enter product title"
+                placeholder="Mahsulot nomini kiriting"
                 required
                 className={`w-full px-4 py-3 rounded-xl border transition-all duration-300 ${
                   focusedField === "title"
@@ -105,7 +105,7 @@ export default function EditModal({ isOpen, onClose, onSave, product }: EditModa
             <div className="space-y-2">
               <label className="text-sm font-medium text-gray-700 flex items-center space-x-2">
                 <DollarSign className="h-4 w-4" />
-                <span>Price</span>
+                <span>Narxi</span>
               </label>
               <div className="relative">
                 <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
@@ -133,7 +133,7 @@ export default function EditModal({ isOpen, onClose, onSave, product }: EditModa
           <div className="space-y-2">
             <label className="text-sm font-medium text-gray-700 flex items-center space-x-2">
               <ImageIcon className="h-4 w-4" />
-              <span>Image URL</span>
+              <span>Rasm havolasi</span>
             </label>
             <input
               type="url"
@@ -153,14 +153,14 @@ export default function EditModal({ isOpen, onClose, onSave, product }: EditModa
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-medium text-gray-700">Description</label>
+            <label className="text-sm font-medium text-gray-700">Tasvirlang</label>
             <textarea
               name="description"
               value={editedProduct.description}
               onChange={handleChange}
               onFocus={() => setFocusedField("description")}
               onBlur={() => setFocusedField("")}
-              placeholder="Enter product description"
+              placeholder="Mahsulot haqida qisqacha ma'lumot..."
               required
               rows={4}
               className={`w-full px-4 py-3 rounded-xl border transition-all duration-300 ${
@@ -177,7 +177,7 @@ export default function EditModal({ isOpen, onClose, onSave, product }: EditModa
               onClick={onClose}
               className="px-6 py-3 border border-gray-300 text-gray-700 rounded-xl hover:bg-gray-50 transition-all duration-300 transform hover:scale-105"
             >
-              Cancel
+              Bekor qilish
             </button>
             <button
               type="submit"
@@ -187,12 +187,12 @@ export default function EditModal({ isOpen, onClose, onSave, product }: EditModa
               {isSubmitting ? (
                 <>
                   <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-3"></div>
-                  Saving...
+                  Saqlanyabdi...
                 </>
               ) : (
                 <>
                   <Save className="h-5 w-5 mr-3" />
-                  Save Changes
+                  Yangilash
                 </>
               )}
             </button>

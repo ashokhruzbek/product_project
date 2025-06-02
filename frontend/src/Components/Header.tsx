@@ -16,11 +16,11 @@ export default function Header({ productCount, totalProducts }: HeaderProps) {
             </div>
             <div>
               <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                ProductHub
+                Mahsulot
               </h1>
               <div className="flex items-center space-x-1 text-xs text-gray-500">
                 <Sparkles className="h-3 w-3" />
-                <span>Modern & Interactive</span>
+                <span>Zamonaviy va Jozibali</span>
               </div>
             </div>
           </div>
@@ -29,7 +29,7 @@ export default function Header({ productCount, totalProducts }: HeaderProps) {
             <div className="flex items-center space-x-2 text-sm text-gray-600 bg-gradient-to-r from-blue-50 to-indigo-50 px-4 py-2 rounded-full shadow-sm border border-blue-100">
               <Package className="h-4 w-4 text-blue-600" />
               <span className="font-medium">
-                {productCount === totalProducts ? `${totalProducts} Products` : `${productCount} of ${totalProducts}`}
+                {productCount === totalProducts ? `${totalProducts}ta Mahsulotlar` : `${productCount} of ${totalProducts}`}
               </span>
             </div>
           </div>

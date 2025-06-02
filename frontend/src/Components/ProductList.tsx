@@ -48,9 +48,9 @@ export default function ProductList({
     <div className="space-y-8">
       <div className="text-center">
         <h2 className="text-4xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent mb-3">
-          Our Products
+          Mahsulotlarimiz
         </h2>
-        <p className="text-gray-600 text-lg">Discover amazing products at great prices</p>
+        <p className="text-gray-600 text-lg">Bizning mahsulotlarimiz bilan tanishib chiqing</p>
         <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-indigo-600 mx-auto mt-4 rounded-full"></div>
       </div>
 
