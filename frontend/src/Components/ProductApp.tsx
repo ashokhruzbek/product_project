@@ -117,7 +117,7 @@ export default function ProductApp() {
       if (!productId) throw new Error("Invalid product ID");
 
       const response = await axios.put<Product>(
-        `hhttp://51.20.76.40/api/products/${productId}`,
+        `http://51.20.76.40/api/products/${productId}`,
         updatedProduct
       );
       setProducts((prev) =>
