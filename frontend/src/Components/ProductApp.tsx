@@ -69,7 +69,7 @@ export default function ProductApp() {
       });
     } catch (error) {
       console.error("Error fetching products:", error);
-      toast.error("Failed to fetch products", {
+      toast.error("Mahsulotlar yuklashda xatolik", {
         position: "top-right",
         autoClose: 3000,
       });
