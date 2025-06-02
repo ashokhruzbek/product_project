@@ -11,10 +11,10 @@ export default function LoadingSpinner() {
           </div>
         </div>
 
-        <h3 className="text-xl font-bold text-gray-800 text-center mb-2">Loading Products...</h3>
+        <h3 className="text-xl font-bold text-gray-800 text-center mb-2">Mahsulotlar yuklanmoqda...</h3>
         <div className="flex items-center justify-center space-x-2 text-sm text-gray-500">
           <Sparkles className="h-4 w-4 animate-pulse" />
-          <span>Preparing something amazing</span>
+          <span>Qidirish uchun qulay va qulay ishlaydi</span>
         </div>
 
         <div className="flex justify-center mt-4 space-x-1">
