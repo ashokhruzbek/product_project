@@ -20,7 +20,7 @@ export default function Header({ productCount, totalProducts }: HeaderProps) {
               </h1>
               <div className="flex items-center space-x-1 text-xs text-gray-500">
                 <Sparkles className="h-3 w-3" />
-                <span>Zamonaviy va Jozibali</span>
+                <span>Zamonaviy</span>
               </div>
             </div>
           </div>
