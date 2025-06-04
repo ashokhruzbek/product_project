@@ -6,7 +6,7 @@ exports.addProduct = async (req, res) => {
     try {
         const { title, price, description, image } = req.body
         const result = await pool.query(
-            `insert into products(title, price, description, image) values($1,$2, $3, $4) returning * `, [title, price, description, image]
+            `) returning * `, [title, price, description, image]
         );
         res.status(201).json(result.rows[0]);
     } catch (error) {
